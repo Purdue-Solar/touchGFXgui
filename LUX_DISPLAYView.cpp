@@ -1,23 +1,23 @@
-#include <gui/screen1_screen/Screen1View.hpp>
+#include <gui/lux_display_screen/LUX_DISPLAYView.hpp>
 
-Screen1View::Screen1View() 
+LUX_DISPLAYView::LUX_DISPLAYView()
 {
     int i = 0;
     touchgfx_printf("Application is running through simulator! \n");
     touchgfx_printf("Print our value for integer i = %i \n", i);
 }
 
-void Screen1View::setupScreen()
+void LUX_DISPLAYView::setupScreen() 
 {
-    Screen1ViewBase::setupScreen();
+    LUX_DISPLAYViewBase::setupScreen();
 }
 
-void Screen1View::tearDownScreen()
+void LUX_DISPLAYView::tearDownScreen()
 {
-    Screen1ViewBase::tearDownScreen();
+    LUX_DISPLAYViewBase::tearDownScreen();
 }
 
-void Screen1View::handleTickEvent()
+void LUX_DISPLAYView::handleTickEvent()
 {
     counter_mph++;
     counter_solar++;
@@ -28,10 +28,10 @@ void Screen1View::handleTickEvent()
 
     if(counter_mph % 15 == 0) // Every 0.25 seconds
     {
-        int currentValue = textProgress.getValue();
+        int currentValue = batterytext.getValue();
         int max;
         int min;
-        textProgress.getRange(min, max);
+        batterytext.getRange(min, max);
 
         if (currentValue == min)
         {
@@ -45,14 +45,14 @@ void Screen1View::handleTickEvent()
         int nextValue = increase == true ? currentValue + 1 : currentValue - 1;
 
         counter_mph = 0;
-        textProgress.setValue(nextValue);
+        batterytext.setValue(nextValue);
     }
     if(counter_solar % 60 == 0) // Every 0.25 seconds
     {
-        int currentValue = textProgress_2.getValue();
+        int currentValue = cabintext.getValue();
         int max;
         int min;
-        textProgress_2.getRange(min, max);
+        cabintext.getRange(min, max);
 
         if (currentValue == min)
         {
@@ -66,14 +66,14 @@ void Screen1View::handleTickEvent()
         int nextValue = increase == true ? currentValue + 1 : currentValue - 1;
 
         counter_solar = 0;
-        textProgress_2.setValue(nextValue);
+        cabintext.setValue(nextValue);
     }
     if(counter_ctemp % 88 == 0) // Every 0.25 seconds
     {
-        int currentValue = textProgress_3.getValue();
+        int currentValue = MPH.getValue();
         int max;
         int min;
-        textProgress_3.getRange(min, max);
+        MPH.getRange(min, max);
 
         if (currentValue == min)
         {
@@ -87,14 +87,14 @@ void Screen1View::handleTickEvent()
         int nextValue = increase == true ? currentValue + 1 : currentValue - 1;
 
         counter_ctemp = 0;
-        textProgress_3.setValue(nextValue);
+        MPH.setValue(nextValue);
     }
     if(counter_battery1 % 103 == 0) // Every 0.25 seconds
     {
-        int currentValue = textProgress_4.getValue();
+        int currentValue = Amps.getValue();
         int max;
         int min;
-        textProgress_4.getRange(min, max);
+        Amps.getRange(min, max);
 
         if (currentValue == min)
         {
@@ -108,14 +108,14 @@ void Screen1View::handleTickEvent()
         int nextValue = increase == true ? currentValue + 1 : currentValue - 1;
 
         counter_battery1 = 0;
-        textProgress_4.setValue(nextValue);
+        Amps.setValue(nextValue);
     }
     if(counter_battery2 % 166 == 0) // Every 0.25 seconds
     {
-        int currentValue = textProgress_5.getValue();
+        int currentValue = batterycurrent.getValue();
         int max;
         int min;
-        textProgress_5.getRange(min, max);
+        batterycurrent.getRange(min, max);
 
         if (currentValue == min)
         {
@@ -129,14 +129,14 @@ void Screen1View::handleTickEvent()
         int nextValue = increase == true ? currentValue + 1 : currentValue - 1;
 
         counter_battery2 = 0;
-        textProgress_5.setValue(nextValue);
+        batterycurrent.setValue(nextValue);
     }
     if(counter_amp % 200 == 0) // Every 0.25 seconds
     {
-        int currentValue = textProgress_6.getValue();
+        int currentValue = solarcurrent.getValue();
         int max;
         int min;
-        textProgress_6.getRange(min, max);
+        solarcurrent.getRange(min, max);
 
         if (currentValue == min)
         {
@@ -150,6 +150,6 @@ void Screen1View::handleTickEvent()
         int nextValue = increase == true ? currentValue + 1 : currentValue - 1;
 
         counter_amp = 0;
-        textProgress_6.setValue(nextValue);
+        solarcurrent.setValue(nextValue);
     }
 }
