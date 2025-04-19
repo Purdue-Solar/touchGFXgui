@@ -1,28 +1,29 @@
-#ifndef SCREEN1VIEW_HPP
-#define SCREEN1VIEW_HPP
+#ifndef LUX_DISPLAYVIEW_HPP
+#define LUX_DISPLAYVIEW_HPP
 
-#include <gui_generated/screen1_screen/Screen1ViewBase.hpp>
-#include <gui/screen1_screen/Screen1Presenter.hpp>
-#include <touchgfx/widgets/Widget.hpp>
-#include <touchgfx/hal/HAL.hpp>
+#include <gui_generated/lux_display_screen/LUX_DISPLAYViewBase.hpp>
+#include <gui/lux_display_screen/LUX_DISPLAYPresenter.hpp>
 
-class Screen1View : public Screen1ViewBase
+class LUX_DISPLAYView : public LUX_DISPLAYViewBase
 {
 public:
-    Screen1View();
-    virtual ~Screen1View() {}
+    LUX_DISPLAYView();
+    virtual ~LUX_DISPLAYView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
     virtual void handleTickEvent();
-
 protected:
+
+
+    int counter_mph = 0;
+    int counter_solar = 0;
+    int counter_ctemp = 0;
+    int counter_battery1 = 0;
+    int counter_battery2 = 0;
+    int counter_amp = 0;
+
+    // Direction flag for progress bar animation
     bool increase = true;
-    uint8_t counter_mph;
-    uint8_t counter_solar;
-    uint8_t counter_ctemp;
-    uint8_t counter_battery1;
-    uint8_t counter_battery2;
-    uint8_t counter_amp;
 };
 
-#endif // SCREEN1VIEW_HPP
+#endif // LUX_DISPLAYVIEW_HPP
